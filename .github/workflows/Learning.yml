@@ -1,0 +1,25 @@
+name: Hello
+
+on:
+  push:
+    branches:
+      - Ubuntu
+  workflow_dispatch:
+
+jobs:
+  run-prechecks:
+
+    runs-on: self-hosted
+
+    environment: vm
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Hello Runner
+        run: |
+          echo "Hello from my self-hosted runner"
+          hostname
+          uname -a
+          whoami
