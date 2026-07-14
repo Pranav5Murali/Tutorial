@@ -16,7 +16,7 @@ jobs:
     steps:
       - run: |
           echo "The details of the runner machine"
-          u1=$(uname -a)
+          u1="uname -a"
           echo "$u1" 
       - run: |
           remote_ip=172.17.0.3
