@@ -1,0 +1,21 @@
+name: my-first-workflow
+
+on:
+  push:
+    branches:
+      - ubuntu
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: self-hosted
+    environment: vm
+    steps:
+      - run: |
+          echo "The details of the runner machine"
+          u1=$(uname -a)
+          echo "$u1" 
+      - run: |
+          echo "The details of the runner host IP"
+          j1=$(hostname)
+          echo "$j1" 
