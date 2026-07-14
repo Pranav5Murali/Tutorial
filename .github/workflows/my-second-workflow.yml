@@ -1,0 +1,27 @@
+name: my-second-workflow
+
+on:
+  push:
+    branches:
+      - ubuntu
+  workflow_dispatch:
+
+jobs:
+  job_check_remote:
+    runs-on: self-hosted
+    environment: vm
+    env:
+      SSH_PASSWORD: ${{ secrets.VM }}
+
+    steps:
+      - run: |
+          echo "The details of the runner machine"
+          u1=$(uname -a)
+          echo "$u1" 
+      - run: |
+          remote_ip=172.17.0.3
+          remote_cmd="uname -a"
+          sshpass -p "$SSH_PASSWORD" ssh \
+            -o StrictHostKeyChecking=no \
+            root@"$remote_ip" \
+            "$remote_cmd"
