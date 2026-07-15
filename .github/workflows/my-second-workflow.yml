@@ -19,9 +19,9 @@ jobs:
           u1="uname -a"
           echo "$u1" 
       - run: |
-          remote_ip=172.17.0.3
+          remote_ip=172.17.0.2
           remote_cmd="uname -a"
           sshpass -p "$SSH_PASSWORD" ssh \
             -o StrictHostKeyChecking=no \
-            root@"$remote_ip" \
+            user1@"$remote_ip" \
             "$remote_cmd"
