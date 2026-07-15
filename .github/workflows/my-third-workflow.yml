@@ -1,0 +1,36 @@
+name: my-third-workflow
+
+on:
+  push:
+    branches:
+      - ubuntu
+  workflow_dispatch:
+
+jobs:
+  job_check_remote:
+    runs-on: self-hosted
+    environment: vm
+    env:
+      SSH_PASSWORD: ${{ secrets.VM }}
+      remote_ip=172.17.0.2
+
+    steps:
+      - run: |
+          echo "The details of the runner machine"
+          u1="uname -a"
+          echo "$u1" 
+      - run: |
+ 
+          remote_cmd="uname -a"
+          sshpass -p "$SSH_PASSWORD" ssh \
+            -o StrictHostKeyChecking=no \
+            user1@"$remote_ip" \
+            "$remote_cmd"
+
+      - run : |
+          echo "Copying python script to target container..."
+          sshpass -p "$SSH_PASSWORD" scp \
+            -o StrictHostKeyChecking=no \
+            health_checks.py \
+            user1@"$remote_ip":/home/user1/
+
