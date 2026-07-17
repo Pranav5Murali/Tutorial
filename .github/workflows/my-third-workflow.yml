@@ -39,7 +39,7 @@ jobs:
           sshpass -p "$SSH_PASSWORD" ssh \
             -o StrictHostKeyChecking=no \
             user1@"$remote_ip" \
-            "python3 /home/user1/health_checks.py"
+            "python3 -u /home/user1/health_checks.py"
             
             
 
