@@ -34,12 +34,16 @@ jobs:
             health_checks.py \
             user1@"$remote_ip":/home/user1/
 
-      - run: |   # NEW STEP - Executes the script on remote
+      - run: |
           echo "Executing health_checks.py on target container..."
           sshpass -p "$SSH_PASSWORD" ssh \
             -o StrictHostKeyChecking=no \
             user1@"$remote_ip" \
-            "python3 -u /home/user1/health_checks.py"
-            
-            
+            "python3 /home/user1/health_checks.py > /tmp/report.txt 2>&1"
 
+          echo "===== HEALTH REPORT ====="
+          sshpass -p "$SSH_PASSWORD" ssh \
+            -o StrictHostKeyChecking=no \
+            user1@"$remote_ip" \
+            "cat /tmp/report.txt"
+            
