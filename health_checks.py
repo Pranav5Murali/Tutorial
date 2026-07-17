@@ -43,10 +43,10 @@ def main():
     print(run_cmd("uptime"))
 
     print_header("5. TOP 5 CPU PROCESSES")
-    print(run_cmd("ps aux --sort=-%%cpu | head -6"))
+    print(run_cmd("ps aux --sort=-%cpu | head -6")) 
 
     print_header("6. TOP 5 MEMORY PROCESSES")
-    print(run_cmd("ps aux --sort=-%%mem | head -6"))
+    print(run_cmd("ps aux --sort=-%mem | head -6"))
 
     print("\n" + "-" * 60)
     print("[OK] Report complete.")
