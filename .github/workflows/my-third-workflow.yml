@@ -39,11 +39,11 @@ jobs:
           sshpass -p "$SSH_PASSWORD" ssh \
             -o StrictHostKeyChecking=no \
             user1@"$remote_ip" \
-            "python3 /home/user1/health_checks.py > /tmp/report.txt 2>&1"
+            "python3 /home/user1/health_checks.py > /home/user1/report.txt 2>&1"
 
           echo "===== HEALTH REPORT ====="
           sshpass -p "$SSH_PASSWORD" ssh \
             -o StrictHostKeyChecking=no \
             user1@"$remote_ip" \
-            "cat /tmp/report.txt"
+            "cat /home/user1//report.txt"
             
