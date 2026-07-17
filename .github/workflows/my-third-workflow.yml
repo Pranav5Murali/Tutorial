@@ -12,7 +12,7 @@ jobs:
     environment: vm
     env:
       SSH_PASSWORD: ${{ secrets.VM }}
-      remote_ip: 172.17.0.2 
+      remote_ip: 172.17.0.3 
 
     steps:
       - run: |
