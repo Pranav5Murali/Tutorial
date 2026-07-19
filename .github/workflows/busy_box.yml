@@ -1,0 +1,24 @@
+name: deploy-busybox
+
+on:
+  push:
+    branches:
+      - ubuntu
+  workflow_dispatch:
+
+jobs:
+  job_busybox:
+    runs-on: self-hosted
+    environment: vm
+    env:
+      SSH_PASSWORD: ${{ secrets.VM }}
+
+    steps:
+      - run: |
+          echo "Runner Information"
+          uname -a
+          docker ps
+
+      - run: |
+          echo "Running Python Script..."
+          python3 scripts/busybox.py
