@@ -22,4 +22,4 @@ jobs:
 
       - run: |
           echo "Running Python Script..."
-          python3 scripts/busybox.py
+          python3 busybox.py
